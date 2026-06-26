@@ -31,8 +31,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install pytest
-        run: pip install pytest
+      - name: Install test deps
+        run: pip install pytest pandas numpy
       - name: Run tests
-        # No hay tests aún; el paso no falla cuando no se recolecta ninguno.
+        # Si no se recolecta ningún test, pytest devuelve 5: no lo tratamos como fallo.
         run: pytest -q || [ $? -eq 5 ]
