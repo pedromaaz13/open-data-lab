@@ -65,6 +65,11 @@ pytest        # desde esta carpeta
 
 ### Para datos reales (en tu máquina, con red)
 
+📖 **Guía detallada paso a paso:** [`docs/COMO_DESCARGAR_DATOS_REALES.md`](docs/COMO_DESCARGAR_DATOS_REALES.md)
+(enlaces exactos a INE, datos.madrid.es y cómo unirlo todo).
+
+Resumen:
+
 1. Edita `src/extract.py` y **verifica los `TODO`** (IDs de tabla del INE y URLs de
    datasets del Ayto. de Madrid — pueden cambiar).
 2. Ejecuta los extractores; los crudos quedan en `data/raw/` con fecha.
