@@ -1,0 +1,37 @@
+# Entorno
+.env
+.venv/
+venv/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Datos (no versionar datos pesados ni intermedios)
+data/raw/*
+data/interim/*
+data/processed/*
+outputs/*
+reports/generated/*
+
+# Formatos de datos
+*.parquet
+*.csv
+*.xlsx
+*.geojson
+*.gpkg
+*.tif
+*.tiff
+*.zip
+*.db
+*.duckdb
+
+# Conservar estructura de carpetas vacías
+!.gitkeep
+!**/.gitkeep
+
+# Excepciones: catálogos versionados del data_catalog
+!09_data_catalog/*.csv
+!11_stack_tecnologico/*.csv

@@ -1,0 +1,9 @@
+id,nombre_api,organismo,url_documentacion,autenticacion,formato_respuesta,limites_uso,ejemplo_endpoint,estado,notas
+1,INE API,INE,https://www.ine.es/dyngs/DAB/index.htm?cid=1099,no,JSON,razonable,https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/,en_uso,series y tablas
+2,Eurostat API,Eurostat,https://ec.europa.eu/eurostat/web/main/data/web-services,no,JSON-stat,razonable,https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hpi_q,en_uso,JSON-stat
+3,AEMET OpenData,AEMET,https://opendata.aemet.es,api_key,JSON,limitado,https://opendata.aemet.es/opendata/api/valores/climatologicos/,candidato,requiere key gratuita
+4,World Bank API,World Bank,https://datahelpdesk.worldbank.org/knowledgebase/articles/889392,no,JSON,razonable,https://api.worldbank.org/v2/country/ESP/indicator/NY.GDP.PCAP.CD,candidato,cliente wbgapi
+5,Copernicus STAC,Copernicus,https://documentation.dataspace.copernicus.eu,oauth,JSON,por_cuota,https://catalogue.dataspace.copernicus.eu/stac,candidato,pystac-client
+6,NASA FIRMS,NASA,https://firms.modaps.eosdis.nasa.gov/api/,api_key,CSV,limitado,https://firms.modaps.eosdis.nasa.gov/api/area/csv/,candidato,focos de incendio
+7,BOE Datos Abiertos,BOE,https://www.boe.es/datosabiertos/,no,XML,razonable,https://www.boe.es/datosabiertos/api/boe/sumario/,candidato,legislacion y anuncios
+8,ECB Data Portal,ECB,https://data.ecb.europa.eu/help/api/overview,no,SDMX,razonable,https://data-api.ecb.europa.eu/service/data/,candidato,macro eurozona

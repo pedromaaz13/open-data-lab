@@ -1,0 +1,13 @@
+id,nombre,organismo,tema,url,formato,frecuencia_actualizacion,nivel_geografico,fecha_consulta,licencia,estado,notas
+1,Indice de Precios de Vivienda,INE,vivienda,https://www.ine.es,JSON,trimestral,CCAA,2026-06-26,Reutilizacion con atribucion,candidato,IPV serie historica
+2,Precio del m2 vivienda,Ministerio de Vivienda,vivienda,https://www.mivau.gob.es,XLSX,trimestral,provincia,2026-06-26,Reutilizacion con atribucion,candidato,cobertura municipal parcial
+3,Encuesta de Poblacion Activa,INE,empleo,https://www.ine.es,JSON,trimestral,nacional,2026-06-26,Reutilizacion con atribucion,candidato,salarios y empleo
+4,Series climatologicas diarias,AEMET,clima,https://opendata.aemet.es,JSON,diaria,estacion,2026-06-26,Reutilizacion AEMET,candidato,requiere API key
+5,Estado de los embalses,MITECO,agua,https://www.miteco.gob.es,XLSX,semanal,cuenca,2026-06-26,Reutilizacion con atribucion,candidato,boletin hidrologico
+6,Sentinel-2 L2A,Copernicus,satelite,https://dataspace.copernicus.eu,COG,continua,raster,2026-06-26,Copernicus open,candidato,NDVI/NBR via STAC
+7,FIRMS focos de incendio,NASA,satelite,https://firms.modaps.eosdis.nasa.gov,CSV,diaria,punto,2026-06-26,NASA open,candidato,casi tiempo real
+8,Contratacion publica OCDS,PLACSP,gasto_publico,https://contrataciondelestado.es,XML,mensual,nacional,2026-06-26,Reutilizacion con atribucion,candidato,formato OCDS/ATOM
+9,Subvenciones BDNS,BDNS,gasto_publico,https://www.infosubvenciones.es,CSV,continua,nacional,2026-06-26,Reutilizacion con atribucion,candidato,normalizar beneficiarios
+10,House Price Index,Eurostat,vivienda,https://ec.europa.eu/eurostat,JSON-stat,trimestral,NUTS,2026-06-26,Eurostat open,candidato,comparativa europea
+11,Limites administrativos,CNIG/IGN,cartografia,https://centrodedescargas.cnig.es,GPKG,anual,municipio,2026-06-26,CC-BY 4.0,candidato,base cartografica
+12,Atlas de Renta,INE,renta,https://www.ine.es,CSV,anual,municipio,2026-06-26,Reutilizacion con atribucion,candidato,renta por seccion censal

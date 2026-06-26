@@ -1,0 +1,78 @@
+[project]
+name = "open-data-lab"
+version = "0.1.0"
+description = "Open source lab for public data, geospatial analysis, data science and civic storytelling."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "pedromaaz13" }]
+keywords = ["open-data", "geospatial", "data-science", "civic-tech", "data-storytelling"]
+
+dependencies = [
+    "pandas",
+    "polars",
+    "numpy",
+    "duckdb",
+    "pyarrow",
+    "requests",
+    "httpx",
+    "beautifulsoup4",
+    "lxml",
+    "python-dotenv",
+    "matplotlib",
+    "plotly",
+    "altair",
+    "scikit-learn",
+    "scipy",
+    "statsmodels",
+    "geopandas",
+    "shapely",
+    "pyproj",
+    "rasterio",
+    "rioxarray",
+    "xarray",
+    "folium",
+    "keplergl",
+    "streamlit",
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "pandera",
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyter",
+    "jupyterlab",
+    "ipykernel",
+    "pytest",
+    "ruff",
+    "black",
+    "sqlfluff",
+    "pre-commit",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.pytest.ini_options]
+testpaths = ["06_proyectos", "08_apps"]
+python_files = ["test_*.py", "*_test.py"]
+
+[tool.sqlfluff.core]
+dialect = "duckdb"
+templater = "jinja"
+max_line_length = 100

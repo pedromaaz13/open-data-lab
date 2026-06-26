@@ -1,0 +1,62 @@
+tecnologia,categoria,capa,clasificacion_coste,recomendacion_para_repo,notas
+Python,lenguaje,local,gratis_local,usar_ahora,base del laboratorio
+JupyterLab,desarrollo,local,gratis_local,usar_ahora,notebooks
+Quarto,publicacion,local,gratis_local,usar_ahora,informes reproducibles
+Pandas,procesamiento,local,gratis_local,usar_ahora,EDA y datasets pequenos
+Polars,procesamiento,local,gratis_local,usar_ahora,rapido y paralelo
+DuckDB,base_analitica,local,gratis_local,usar_ahora,SQL sobre Parquet
+Parquet,formato,local,gratis_local,usar_ahora,columnar eficiente
+GeoParquet,formato,local,gratis_local,usar_ahora,geoespacial
+PostgreSQL,base_datos,pro,open_source_self_hosted,usar_ahora,persistencia relacional
+PostGIS,geoespacial,pro,open_source_self_hosted,usar_ahora,analisis territorial
+dbt Core,transformacion,pro,open_source_self_hosted,usar_ahora,modelado
+Dagster,orquestacion,pro,open_source_self_hosted,usar_ahora,assets y lineage
+Apache Superset,bi,pro,open_source_self_hosted,usar_ahora,dashboards
+Metabase,bi,pro,open_source_self_hosted,usar_si_aporta,BI sencillo
+Kepler.gl,mapas,pro,open_source_self_hosted,usar_ahora,mapas interactivos
+deck.gl,mapas,pro,open_source_self_hosted,usar_si_aporta,gran volumen
+MapLibre,mapas,pro,open_source_self_hosted,usar_si_aporta,mapas web
+Streamlit,app,pro,open_source_self_hosted,usar_ahora,prototipos
+FastAPI,backend,pro,open_source_self_hosted,usar_ahora,APIs de datos
+Docker Compose,devops,pro,open_source_self_hosted,usar_ahora,reproducibilidad
+GitHub Actions,ci_cd,pro,free_tier,usar_ahora,CI gratuito en repos publicos
+Grafana,observabilidad,pro,open_source_self_hosted,documentar,metricas
+MinIO,almacenamiento,pro,open_source_self_hosted,usar_si_aporta,S3 local
+QGIS,geoespacial,local,gratis_local,usar_si_aporta,SIG escritorio
+H3,geoespacial,local,gratis_local,usar_si_aporta,indexacion hexagonal
+Rasterio,geoespacial,local,gratis_local,usar_si_aporta,raster
+rioxarray,geoespacial,local,gratis_local,usar_si_aporta,raster + xarray
+xarray,procesamiento,local,gratis_local,usar_si_aporta,datos N-dimensionales
+pystac-client,extraccion,local,gratis_local,usar_si_aporta,STAC
+openEO,satelite,local,free_tier,documentar,procesamiento cloud satelite
+sentinelhub,satelite,cloud,pago_bajo,usar_si_aporta,procesamiento serio satelite
+Plotly,visualizacion,local,gratis_local,usar_ahora,interactivo
+Altair,visualizacion,local,gratis_local,usar_ahora,declarativo
+pytest,testing,local,gratis_local,usar_ahora,tests
+pandera,calidad,local,gratis_local,usar_ahora,validacion esquemas
+Great Expectations,calidad,local,open_source_self_hosted,usar_si_aporta,suites de calidad
+ruff,tooling,local,gratis_local,usar_ahora,linter
+black,tooling,local,gratis_local,usar_ahora,formato
+sqlfluff,tooling,local,gratis_local,usar_ahora,lint SQL
+pre-commit,tooling,local,gratis_local,usar_ahora,hooks
+uv,entorno,local,gratis_local,usar_ahora,gestor rapido
+Poetry,entorno,local,gratis_local,usar_si_aporta,gestor dependencias
+MkDocs,documentacion,local,gratis_local,usar_si_aporta,docs site
+MotherDuck,base_analitica,cloud,free_tier,usar_si_aporta,DuckDB cloud
+Supabase,base_datos,cloud,free_tier,usar_si_aporta,Postgres gestionado
+Neon,base_datos,cloud,free_tier,usar_si_aporta,Postgres serverless
+Render,despliegue,cloud,free_tier,usar_si_aporta,apps/backend
+Fly.io,despliegue,cloud,free_tier,usar_si_aporta,apps/backend
+Railway,despliegue,cloud,pago_bajo,usar_si_aporta,apps/backend
+Vercel,frontend,cloud,free_tier,usar_si_aporta,Next.js
+Grafana Cloud,observabilidad,cloud,free_tier,usar_si_aporta,observabilidad gestionada
+Metabase Cloud,bi,cloud,pago_bajo,usar_si_aporta,BI gestionado
+Mapbox,mapas,cloud,free_tier,usar_si_aporta,mapas avanzados
+BigQuery,warehouse,cloud,pago_profesional,documentar,warehouse cloud
+Databricks,lakehouse,cloud,enterprise,solo_enterprise,lakehouse
+Snowflake,warehouse,cloud,enterprise,solo_enterprise,warehouse
+Looker,bi,cloud,enterprise,solo_enterprise,BI semantico
+Power BI,bi,cloud,pago_profesional,documentar,BI Microsoft
+Kafka,streaming,pro,open_source_self_hosted,evitar_al_inicio,sobre-ingenieria al inicio
+Flink,streaming,pro,open_source_self_hosted,evitar_al_inicio,stream processing
+Airflow,orquestacion,pro,open_source_self_hosted,evitar_al_inicio,Dagster preferido

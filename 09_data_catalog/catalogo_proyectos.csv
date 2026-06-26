@@ -1,0 +1,7 @@
+id,nombre_proyecto,categoria,pregunta,estado,fuentes,notebook_principal,visualizacion,fecha_inicio,fecha_actualizacion,notas
+1,Mapa de vivienda y salarios,vivienda,Anos de salario por vivienda por territorio,planificado,INE;Ministerio Vivienda;CNIG,,mapa coropletico,2026-06-26,2026-06-26,proyecto base
+2,Calor extremo y desigualdad,clima,El calor golpea mas a zonas con menos renta,planificado,AEMET;Copernicus;INE,,mapa+scatter,2026-06-26,2026-06-26,desigualdad climatica
+3,Sequia y embalses,agua,Evolucion de la sequia por cuenca,planificado,MITECO;AEMET;CNIG,,mapa animado,2026-06-26,2026-06-26,boletin hidrologico
+4,Incendios y NDVI Copernicus,satelite,Superficie y severidad de incendios,planificado,Copernicus;NASA FIRMS;EFFIS,,raster severidad,2026-06-26,2026-06-26,NBR/NDVI
+5,Subvenciones publicas,gasto_publico,Distribucion de subvenciones,planificado,BDNS;INE,,treemap+mapa,2026-06-26,2026-06-26,entity resolution
+6,Contratacion publica,gasto_publico,Patrones anomalos en contratacion,planificado,PLACSP;CPV,,dashboard,2026-06-26,2026-06-26,deteccion anomalias

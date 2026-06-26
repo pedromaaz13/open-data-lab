@@ -1,0 +1,23 @@
+id,nombre,ambito,pais,url,temas,tipo_datos,api_disponible,notas
+1,INE,nacional,ES,https://www.ine.es,demografia;empleo;precios;vivienda,estadistica,si,estadistica oficial
+2,datos.gob.es,nacional,ES,https://datos.gob.es,multisectorial,catalogo,si,agregador
+3,Ministerio de Vivienda,nacional,ES,https://www.mivau.gob.es,vivienda,estadistica,no,precios y alquiler
+4,MITECO,nacional,ES,https://www.miteco.gob.es,medioambiente;agua;energia,estadistica;geo,parcial,multiorganismo
+5,AEMET,nacional,ES,https://opendata.aemet.es,clima;meteorologia,series;geo,si,API key
+6,Catastro,nacional,ES,https://www.sedecatastro.gob.es,catastro;suelo,geo,si,INSPIRE
+7,CNIG/IGN,nacional,ES,https://centrodedescargas.cnig.es,cartografia,geo,si,base cartografica
+8,PLACSP,nacional,ES,https://contrataciondelestado.es,contratacion,transaccional,si,OCDS
+9,BDNS,nacional,ES,https://www.infosubvenciones.es,subvenciones,transaccional,si,ayudas publicas
+10,Banco de Espana,nacional,ES,https://www.bde.es,economia;finanzas,series,si,macro
+11,BOE,nacional,ES,https://www.boe.es,legislacion,texto,si,datos abiertos
+12,Eurostat,europeo,EU,https://ec.europa.eu/eurostat,multisectorial,estadistica,si,NUTS
+13,Copernicus,europeo,EU,https://dataspace.copernicus.eu,satelite;clima,raster,si,Sentinel
+14,data.europa.eu,europeo,EU,https://data.europa.eu,multisectorial,catalogo,si,agregador UE
+15,ECB,europeo,EU,https://data.ecb.europa.eu,finanzas,series,si,SDMX
+16,EEA,europeo,EU,https://www.eea.europa.eu,medioambiente,geo;estadistica,parcial,CORINE
+17,World Bank,global,INT,https://data.worldbank.org,desarrollo,estadistica,si,WDI
+18,OECD,global,INT,https://data.oecd.org,economia;bienestar,estadistica,si,SDMX
+19,IMF,global,INT,https://www.imf.org/en/Data,macroeconomia,estadistica,si,SDMX
+20,UN Data,global,INT,https://data.un.org,desarrollo;ODS,estadistica,si,multiagencia
+21,NASA,global,INT,https://earthdata.nasa.gov,satelite;clima,raster,si,Earthdata
+22,NOAA,global,INT,https://www.ncei.noaa.gov,clima;oceanos,series,si,CDO API

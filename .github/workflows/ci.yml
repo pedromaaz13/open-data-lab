@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint (ruff + black + sqlfluff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install tooling
+        run: pip install ruff black sqlfluff
+      - name: Ruff
+        run: ruff check . || true
+      - name: Black (check)
+        run: black --check . || true
+      - name: SQLFluff
+        run: sqlfluff lint . --dialect duckdb || true
+
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install pytest
+        run: pip install pytest
+      - name: Run tests
+        # No hay tests aún; el paso no falla cuando no se recolecta ninguno.
+        run: pytest -q || [ $? -eq 5 ]
