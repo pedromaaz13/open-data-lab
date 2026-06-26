@@ -5,3 +5,4 @@ id,nombre_proyecto,categoria,pregunta,estado,fuentes,notebook_principal,visualiz
 4,Incendios y NDVI Copernicus,satelite,Superficie y severidad de incendios,planificado,Copernicus;NASA FIRMS;EFFIS,,raster severidad,2026-06-26,2026-06-26,NBR/NDVI
 5,Subvenciones publicas,gasto_publico,Distribucion de subvenciones,planificado,BDNS;INE,,treemap+mapa,2026-06-26,2026-06-26,entity resolution
 6,Contratacion publica,gasto_publico,Patrones anomalos en contratacion,planificado,PLACSP;CPV,,dashboard,2026-06-26,2026-06-26,deteccion anomalias
+7,CAM renta vs vivienda por municipios,vivienda,Donde se vive mejor o mas apurado en la Comunidad de Madrid por municipio,en_progreso,INE Atlas Renta;Mo Vivienda;CNIG,01_cam_municipios_renta_vivienda.ipynb,ranking+scatter,2026-06-26,2026-06-26,nivel 2 del analisis de vivienda; pipeline probado con datos sinteticos

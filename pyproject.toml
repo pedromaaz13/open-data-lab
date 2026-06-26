@@ -68,9 +68,11 @@ ignore = ["E501"]
 line-length = 100
 target-version = ["py311"]
 
-[tool.pytest.ini_options]
-testpaths = ["06_proyectos", "08_apps"]
-python_files = ["test_*.py", "*_test.py"]
+# Nota: los tests se ejecutan POR PROYECTO (cada proyecto en 06_proyectos/ es
+# autocontenido y tiene su propio pytest.ini como rootdir aislado). Esto evita
+# colisiones de nombres de módulo entre proyectos. Ejecuta:
+#   cd 06_proyectos/<proyecto> && pytest
+# El CI recorre cada proyecto y corre sus tests por separado.
 
 [tool.sqlfluff.core]
 dialect = "duckdb"

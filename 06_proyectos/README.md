@@ -28,6 +28,7 @@ NN_nombre/
 | `04_incendios_ndvi_copernicus/` | ¿Qué superficie y vegetación afectan los incendios (NDVI/NBR)? |
 | `05_subvenciones_publicas/` | ¿Cómo se distribuyen las subvenciones públicas? |
 | `06_contratacion_publica/` | ¿Hay patrones anómalos en la contratación pública? |
+| `07_cam_municipios_renta_vivienda/` | ¿Dónde se vive mejor/peor en la CAM por municipio? (nivel 2 del proyecto 01) |
 
 ## Cómo crear un proyecto nuevo
 

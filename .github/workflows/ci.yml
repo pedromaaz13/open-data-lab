@@ -33,6 +33,16 @@ jobs:
           python-version: "3.11"
       - name: Install test deps
         run: pip install pytest pandas numpy
-      - name: Run tests
-        # Si no se recolecta ningún test, pytest devuelve 5: no lo tratamos como fallo.
-        run: pytest -q || [ $? -eq 5 ]
+      - name: Run tests per project
+        # Cada proyecto en 06_proyectos/ es autocontenido y se prueba aislado
+        # (su propio pytest.ini como rootdir) para evitar colisiones de módulos.
+        # Código de salida 5 = "no se recolectó ningún test": no es un fallo.
+        run: |
+          status=0
+          for tdir in $(find . -type d -name tests -not -path '*/.*' | sort); do
+            proj=$(dirname "$tdir")
+            echo "::group::pytest $proj"
+            ( cd "$proj" && pytest ) || { rc=$?; [ "$rc" = "5" ] || status=1; }
+            echo "::endgroup::"
+          done
+          exit $status
