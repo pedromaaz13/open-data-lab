@@ -105,18 +105,23 @@ def _kepler_config(data_id: str, color_field: str, color_scale: str = "quantile"
                             "columns": {"geojson": "geometry"},
                             "isVisible": True,
                             "visConfig": {
-                                "opacity": 0.8,
+                                "opacity": 0.85,
                                 "stroked": True,
                                 "filled": True,
-                                "thickness": 0.5,
+                                "thickness": 0.3,
+                                "strokeColor": [255, 255, 255],
                                 "colorRange": _COLOR_RANGE_VIRIDIS,
                             },
+                        },
+                        # El campo de color y la escala van en visualChannels (clave!).
+                        "visualChannels": {
                             "colorField": {"name": color_field, "type": "real"},
                             "colorScale": color_scale,
                         },
                     }
                 ]
-            }
+            },
+            "mapStyle": {"styleType": "dark"},
         },
     }
 
