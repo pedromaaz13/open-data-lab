@@ -25,6 +25,16 @@ import config
 
 COD_MADRID = "28079"  # código INE del municipio de Madrid
 
+# Nombres oficiales de los 21 distritos de la ciudad de Madrid (por su número).
+NOMBRES_DISTRITO = {
+    "01": "Centro", "02": "Arganzuela", "03": "Retiro", "04": "Salamanca",
+    "05": "Chamartín", "06": "Tetuán", "07": "Chamberí", "08": "Fuencarral-El Pardo",
+    "09": "Moncloa-Aravaca", "10": "Latina", "11": "Carabanchel", "12": "Usera",
+    "13": "Puente de Vallecas", "14": "Moratalaz", "15": "Ciudad Lineal",
+    "16": "Hortaleza", "17": "Villaverde", "18": "Villa de Vallecas",
+    "19": "Vicálvaro", "20": "San Blas-Canillejas", "21": "Barajas",
+}
+
 # Fichero (nombre limpio que descarga extract.py) -> prefijo para sus columnas.
 FICHEROS = {
     "ine_renta_media_mediana.csv": "",          # núcleo: deja los nombres tal cual
@@ -99,6 +109,10 @@ def construir_madrid(raw_dir: str | Path | None = None, periodo: str = "2023") -
         raise FileNotFoundError(
             f"No hay ficheros del INE en {raw}. Ejecuta antes: python src/extract.py"
         )
+    # Añade el nombre oficial del distrito (Centro, Salamanca, ...).
+    base["num_distrito"] = base["cod_distrito"].str[5:7]
+    base.insert(2, "nombre_distrito", base["num_distrito"].map(NOMBRES_DISTRITO))
+    base = base.drop(columns="num_distrito")
     return base.sort_values("cod_distrito").reset_index(drop=True)
 
 
