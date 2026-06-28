@@ -45,6 +45,27 @@ def cargar_geometria_real(geojson_path: str | Path, df, on: str = "cod_barrio") 
     return barrios.merge(df, on=on)
 
 
+def unir_distritos_madrid(geo, df, col_codigo_geo: str = "COD_DIS_TX") -> gpd.GeoDataFrame:
+    """Une la geometría de los distritos de Madrid (Geoportal Ayto.) con un DataFrame.
+
+    - `geo`: ruta al shapefile/zip de distritos, o un GeoDataFrame ya cargado.
+    - `df`: tabla por distrito; debe tener `cod_distrito` (código INE de 7 dígitos,
+      p. ej. '2807901'). La unión se hace por el número de distrito ('01'..'21').
+    - `col_codigo_geo`: columna de código de distrito en la geometría (en el shapefile
+      del Ayto. es 'COD_DIS_TX', con valores '01'..'21').
+
+    Devuelve un GeoDataFrame con geometría + indicadores, listo para mapear.
+    """
+    g = gpd.read_file(geo) if not isinstance(geo, gpd.GeoDataFrame) else geo.copy()
+    g["num_distrito"] = g[col_codigo_geo].astype(str).str.zfill(2)
+
+    d = df.copy()
+    d["num_distrito"] = d["cod_distrito"].astype(str).str[5:7]
+
+    gdf = g.merge(d, on="num_distrito", how="left")
+    return gpd.GeoDataFrame(gdf, geometry="geometry", crs=g.crs)
+
+
 def mapa_choropleth(gdf: gpd.GeoDataFrame, columna: str = "esfuerzo_alquiler_pct",
                     titulo: str | None = None, cmap: str = "RdYlGn_r",
                     guardar: str | Path | None = None):
