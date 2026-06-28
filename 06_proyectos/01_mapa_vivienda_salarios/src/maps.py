@@ -80,25 +80,75 @@ def mapa_choropleth(gdf: gpd.GeoDataFrame, columna: str = "esfuerzo_alquiler_pct
     return fig, ax
 
 
-def mapa_kepler(gdf: gpd.GeoDataFrame, nombre: str = "barrios",
-                guardar_html: str | Path | None = None):
-    """Construye un mapa interactivo con Kepler.gl. Requiere `keplergl` y geometría real.
+# Gradiente de color (estilo viridis) para Kepler: oscuro = bajo, claro = alto.
+_COLOR_RANGE_VIRIDIS = {
+    "name": "Viridis-6",
+    "type": "sequential",
+    "category": "Uber",
+    "colors": ["#440154", "#414487", "#2a788e", "#22a884", "#7ad151", "#fde725"],
+}
 
-    Kepler necesita coordenadas geográficas (lat/lon, EPSG:4326), así que solo tiene
-    sentido con la geometría REAL de los barrios, no con la rejilla esquemática.
+
+def _kepler_config(data_id: str, color_field: str, color_scale: str = "quantile") -> dict:
+    """Config de Kepler.gl para colorear los polígonos por `color_field` (gradiente)."""
+    return {
+        "version": "v1",
+        "config": {
+            "visState": {
+                "layers": [
+                    {
+                        "id": "capa_color",
+                        "type": "geojson",
+                        "config": {
+                            "dataId": data_id,
+                            "label": color_field,
+                            "columns": {"geojson": "geometry"},
+                            "isVisible": True,
+                            "visConfig": {
+                                "opacity": 0.8,
+                                "stroked": True,
+                                "filled": True,
+                                "thickness": 0.5,
+                                "colorRange": _COLOR_RANGE_VIRIDIS,
+                            },
+                            "colorField": {"name": color_field, "type": "real"},
+                            "colorScale": color_scale,
+                        },
+                    }
+                ]
+            }
+        },
+    }
+
+
+def mapa_kepler(gdf: gpd.GeoDataFrame, nombre: str = "datos",
+                color_field: str | None = None, color_scale: str = "quantile",
+                guardar_html: str | Path | None = None):
+    """Mapa interactivo con Kepler.gl, coloreado por `color_field` si se indica.
+
+    - `color_field`: columna por la que colorear (p. ej. 'Renta neta media por hogar').
+      Si es None, Kepler pinta todo del mismo color (lo coloreas tú en el panel).
+    - `color_scale`: 'quantile' (por defecto), 'quantize' u 'ordinal'.
+
+    Requiere `keplergl` y geometría real (la reproyecta a lat/lon EPSG:4326).
     """
     try:
         from keplergl import KeplerGl
     except ImportError as e:  # keplergl no instalado
         raise ImportError(
-            "Falta keplergl. Instala con: pip install keplergl  (y usa geometría real)."
+            "Falta keplergl. Instala con: pip install keplergl"
         ) from e
 
     if gdf.crs is not None and gdf.crs.to_epsg() != 4326:
         gdf = gdf.to_crs(4326)
 
-    m = KeplerGl(height=600)
-    m.add_data(data=gdf, name=nombre)
+    if color_field:
+        config = _kepler_config(nombre, color_field, color_scale)
+        m = KeplerGl(height=600, data={nombre: gdf}, config=config)
+    else:
+        m = KeplerGl(height=600)
+        m.add_data(data=gdf, name=nombre)
+
     if guardar_html:
         m.save_to_html(file_name=str(guardar_html))
     return m
