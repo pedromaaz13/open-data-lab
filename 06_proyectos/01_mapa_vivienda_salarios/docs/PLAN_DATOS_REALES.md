@@ -5,9 +5,46 @@ de Renta de los Hogares, ADRH 2023) a nivel de **distrito de Madrid**, y luego a
 la capa de **vivienda**.
 
 > Todas las descargas van a `06_proyectos/01_mapa_vivienda_salarios/data/raw/`.
-> Renombra cada fichero al **nombre destino** de la tabla para que el código lo
-> encuentre. Año: **2023**. Formato: **CSV separado por `;`**. Territorio:
+> Año: **2023**. Formato: **CSV separado por `;`** (UTF-8 con BOM). Territorio:
 > **distritos de Madrid** (códigos que empiezan por `2807901`...`2807921`).
+
+## Estado actual (lo que ya funciona)
+
+✅ **Renta real montada y reproducible.** Las 4 tablas del INE se descargan solas con
+`python src/extract.py` (URLs reales en `src/extract.py`), `src/load_ine.py` las limpia
+y filtra los 21 distritos de Madrid, y el notebook `notebooks/02_madrid_distritos_ine_real.ipynb`
+muestra el análisis real + una capa **DuckDB** (SQL sobre un fichero, sin servidor).
+
+Hallazgo real (INE 2023): Chamartín es el distrito más rico (≈79k €/hogar) y Puente de
+Vallecas el más pobre (≈33k €); los distritos de **mayor renta** son los **más
+desiguales** por dentro (correlación renta↔Gini ≈ +0,69).
+
+## Siguiente paso: el MAPA antes que la vivienda
+
+Decisión: hacer el **mapa real** ahora, antes de la vivienda. Motivo:
+
+| | Mapa real | Vivienda |
+|---|---|---|
+| Datos que necesita | 1 fichero (geometría distritos) | Buscar alquiler/compra oficial por distrito (más difícil) |
+| Usa lo que ya tienes | ✅ Sí (la renta real) | Necesita datos nuevos |
+| Recompensa | 🔥 Madrid de verdad coloreado por renta | Alta, pero más curro de búsqueda |
+
+El mapa convierte la renta que ya tenemos en un mapa real de Madrid con un solo fichero
+más: victoria rápida y muy visual. Luego vamos a por la vivienda (más caza de datos).
+
+**Tarea (geometría de distritos):**
+1. En `https://datos.madrid.es`, busca `distritos`.
+2. Descarga el dataset de **Distritos** con **geometría** (GeoJSON o Shapefile .zip).
+3. Guárdalo en `data/raw/` (p. ej. `distritos_madrid.geojson`).
+4. Inspecciona y pega columnas + CRS:
+   ```python
+   import geopandas as gpd
+   g = gpd.read_file("../data/raw/EL_FICHERO.geojson")   # o "...zip" si es shapefile
+   print("filas:", len(g)); print("columnas:", g.columns.tolist()); print("CRS:", g.crs)
+   print(g.drop(columns="geometry").head(25).to_string())
+   ```
+   Con eso se escribe la función que une geometría + renta y pinta el coroplético real
+   (estático) y el mapa interactivo con **Kepler.gl**.
 
 ## Bloque A — INE Atlas (renta y sociedad)
 
@@ -44,21 +81,19 @@ secciones → (tabla) → Madrid → distritos → 2023 → Descargar CSV (;)*.
 Como todas las tablas del INE comparten formato, **en cuanto crackeemos la nº1 las
 demás van rodadas.**
 
-## Snippet para inspeccionar cada CSV
+## Nota sobre el formato del INE (aprendido)
 
-```python
-import pandas as pd
-crudo = pd.read_csv("../data/raw/ine_renta_media_mediana.csv", sep=";", encoding="latin-1")
-print(crudo.shape)
-print(crudo.columns.tolist())
-crudo.head(15)
-```
+- Encoding correcto: **`utf-8-sig`** (no latin-1; si no, salen símbolos raros).
+- Formato **largo**: cada fila es *territorio × indicador × año*; el valor está en `Total`
+  (`16.893` = 16.893 € con `.` de miles; `.` a secas = sin dato). `src/load_ine.py` ya
+  parsea esto y pivota los indicadores a columnas.
 
 ## Estado
 
-- [ ] 1. Renta media y mediana
-- [ ] 2. Gini y P80/P20
-- [ ] 3. Fuente de ingresos
-- [ ] 4. Demografía
-- [ ] 5. Umbrales de pobreza
-- [ ] B. Vivienda (alquiler / compra / geometría)
+- [x] 1. Renta media y mediana ✅
+- [x] 2. Gini y P80/P20 ✅
+- [x] 3. Fuente de ingresos ✅
+- [x] 4. Demografía ✅
+- [ ] 5. Umbrales de pobreza (opcional, mismo método)
+- [ ] **Mapa**: geometría de distritos (GeoJSON Ayto. Madrid) → coroplético + Kepler.gl ← *siguiente*
+- [ ] B. Vivienda (alquiler / compra por distrito) → esfuerzo real
