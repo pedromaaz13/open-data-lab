@@ -121,6 +121,42 @@ def _kepler_config(data_id: str, color_field: str, color_scale: str = "quantile"
     }
 
 
+def mapa_folium(gdf: gpd.GeoDataFrame, columna: str,
+                nombre_col: str = "nombre_distrito",
+                guardar_html: str | Path | None = None):
+    """Mapa interactivo con Folium (Leaflet): coroplético con **leyenda** y tooltip.
+
+    Más sencillo y fiable que Kepler para colorear por un valor: siempre sale el
+    gradiente y la barra de leyenda. Reproyecta a lat/lon (EPSG:4326).
+    """
+    import branca.colormap as bcm
+    import folium
+
+    g = gdf.to_crs(4326) if (gdf.crs is not None and gdf.crs.to_epsg() != 4326) else gdf.copy()
+    vals = g[columna].dropna()
+    cmap = bcm.linear.viridis.scale(float(vals.min()), float(vals.max()))
+    cmap.caption = columna
+
+    minx, miny, maxx, maxy = g.total_bounds
+    m = folium.Map(location=[(miny + maxy) / 2, (minx + maxx) / 2],
+                   zoom_start=11, tiles="cartodbpositron")
+
+    def _style(feat):
+        v = feat["properties"].get(columna)
+        return {"fillColor": cmap(v) if v is not None else "#cccccc",
+                "color": "white", "weight": 1, "fillOpacity": 0.85}
+
+    folium.GeoJson(
+        g, style_function=_style,
+        tooltip=folium.GeoJsonTooltip(fields=[nombre_col, columna]),
+    ).add_to(m)
+    cmap.add_to(m)  # leyenda (barra de color)
+
+    if guardar_html:
+        m.save(str(guardar_html))
+    return m
+
+
 def mapa_kepler(gdf: gpd.GeoDataFrame, nombre: str = "datos",
                 color_field: str | None = None, color_scale: str = "quantile",
                 guardar_html: str | Path | None = None):
