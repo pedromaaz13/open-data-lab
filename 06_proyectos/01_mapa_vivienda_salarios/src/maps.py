@@ -80,17 +80,23 @@ def mapa_choropleth(gdf: gpd.GeoDataFrame, columna: str = "esfuerzo_alquiler_pct
     return fig, ax
 
 
-# Gradiente de color (estilo viridis) para Kepler: oscuro = bajo, claro = alto.
-_COLOR_RANGE_VIRIDIS = {
-    "name": "Viridis-6",
-    "type": "sequential",
-    "category": "Uber",
-    "colors": ["#440154", "#414487", "#2a788e", "#22a884", "#7ad151", "#fde725"],
+# Paletas de color (orden: valor BAJO -> valor ALTO).
+PALETAS = {
+    # rojo/morado (renta baja) -> azul (renta alta). Estético y moderno.
+    "rojo_morado_azul": ["#cf1d35", "#b5179e", "#7209b7", "#560bad", "#3a0ca3", "#4361ee"],
+    "viridis": ["#440154", "#414487", "#2a788e", "#22a884", "#7ad151", "#fde725"],
+    "magma": ["#000004", "#3b0f70", "#8c2981", "#de4968", "#fe9f6d", "#fcfdbf"],
 }
 
 
-def _kepler_config(data_id: str, color_field: str, color_scale: str = "quantile") -> dict:
+def _color_range(colors: list[str]) -> dict:
+    return {"name": "ODL", "type": "sequential", "category": "Uber", "colors": colors}
+
+
+def _kepler_config(data_id: str, color_field: str, color_scale: str = "quantile",
+                   colors: list[str] | None = None) -> dict:
     """Config de Kepler.gl para colorear los polígonos por `color_field` (gradiente)."""
+    colors = colors or PALETAS["rojo_morado_azul"]
     return {
         "version": "v1",
         "config": {
@@ -110,7 +116,7 @@ def _kepler_config(data_id: str, color_field: str, color_scale: str = "quantile"
                                 "filled": True,
                                 "thickness": 0.3,
                                 "strokeColor": [255, 255, 255],
-                                "colorRange": _COLOR_RANGE_VIRIDIS,
+                                "colorRange": _color_range(colors),
                             },
                         },
                         # El campo de color y la escala van en visualChannels (clave!).
@@ -166,12 +172,15 @@ def mapa_folium(gdf: gpd.GeoDataFrame, columna: str,
 
 def mapa_kepler(gdf: gpd.GeoDataFrame, nombre: str = "datos",
                 color_field: str | None = None, color_scale: str = "quantile",
+                palette: str = "rojo_morado_azul",
                 guardar_html: str | Path | None = None):
     """Mapa interactivo con Kepler.gl, coloreado por `color_field` si se indica.
 
     - `color_field`: columna por la que colorear (p. ej. 'Renta neta media por hogar').
       Si es None, Kepler pinta todo del mismo color (lo coloreas tú en el panel).
     - `color_scale`: 'quantile' (por defecto), 'quantize' u 'ordinal'.
+    - `palette`: nombre en `PALETAS` ('rojo_morado_azul', 'viridis', 'magma'). El orden
+      es valor BAJO -> ALTO (rojo/morado = renta baja, azul = renta alta).
 
     Requiere `keplergl` y geometría real (la reproyecta a lat/lon EPSG:4326).
     """
@@ -186,7 +195,8 @@ def mapa_kepler(gdf: gpd.GeoDataFrame, nombre: str = "datos",
         gdf = gdf.to_crs(4326)
 
     if color_field:
-        config = _kepler_config(nombre, color_field, color_scale)
+        colors = PALETAS.get(palette, PALETAS["rojo_morado_azul"])
+        config = _kepler_config(nombre, color_field, color_scale, colors)
         m = KeplerGl(height=600, data={nombre: gdf}, config=config)
     else:
         m = KeplerGl(height=600)
