@@ -121,7 +121,9 @@ def _kepler_config(data_id: str, color_field: str, color_scale: str = "quantile"
                     }
                 ]
             },
-            "mapStyle": {"styleType": "dark"},
+            # Sin override de mapStyle: se usa el mapa base oscuro por defecto de
+            # Kepler (que funciona sin token de Mapbox). Forzarlo aquí lo deja en
+            # blanco si no hay token.
         },
     }
 
