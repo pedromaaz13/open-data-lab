@@ -50,9 +50,9 @@ FUENTES = {
         "url": "https://datos.madrid.es",
     },
     "geometria": {
-        "organismo": "Ayuntamiento de Madrid",
-        "dataset": "Barrios / Distritos (límites administrativos)",
-        "nivel": "barrio / distrito",
-        "url": "https://datos.madrid.es",
+        "organismo": "Ayuntamiento de Madrid (Geoportal)",
+        "dataset": "Distritos (límites administrativos) — Shapefile",
+        "nivel": "distrito",
+        "url": "https://geoportal.madrid.es/fsdescargas/IDEAM_WBGEOPORTAL/LIMITES_ADMINISTRATIVOS/Distritos/Distritos.zip",
     },
 }

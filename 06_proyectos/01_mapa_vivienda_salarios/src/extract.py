@@ -16,12 +16,15 @@ import httpx
 
 import config
 
-# Tabla del INE (id jaxiT3) -> nombre de fichero destino en data/raw/
+# Fichero destino en data/raw/ -> URL directa de descarga.
 URLS: dict[str, str] = {
+    # Renta y sociedad (INE Atlas de Renta, ADRH 2023 — tablas jaxiT3)
     "ine_renta_media_mediana.csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/31097.csv?nocab=1",
     "ine_fuente_ingresos.csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/31098.csv?nocab=1",
     "ine_gini_p80p20.csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/37727.csv?nocab=1",
     "ine_demografia.csv": "https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/31105.csv?nocab=1",
+    # Geometría de los distritos (Geoportal del Ayto. de Madrid — Shapefile en .zip)
+    "distritos_madrid.zip": "https://geoportal.madrid.es/fsdescargas/IDEAM_WBGEOPORTAL/LIMITES_ADMINISTRATIVOS/Distritos/Distritos.zip",
 }
 
 
