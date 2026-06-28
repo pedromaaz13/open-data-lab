@@ -12,6 +12,7 @@ No es teoría suelta: es el manual operativo del laboratorio. Cualquier proyecto
 |---|---|
 | `metodologia_proyectos.md` | Metodología end-to-end de un proyecto de datos |
 | `flujo_trabajo_data_project.md` | Flujo operativo paso a paso |
+| `flujo_anadir_fuente_datos.md` | Cómo incorporar una fuente nueva (enlace → extractor → raw → loader) |
 | `buenas_practicas_notebooks.md` | Cómo escribir notebooks profesionales |
 | `buenas_practicas_repositorios.md` | Estructura, ramas, commits, CI |
 | `estructura_articulo_data_storytelling.md` | Cómo contar la historia con datos |
