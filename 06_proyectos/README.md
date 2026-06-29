@@ -29,6 +29,7 @@ NN_nombre/
 | `05_subvenciones_publicas/` | ¿Cómo se distribuyen las subvenciones públicas? |
 | `06_contratacion_publica/` | ¿Hay patrones anómalos en la contratación pública? |
 | `07_cam_municipios_renta_vivienda/` | ¿Dónde se vive mejor/peor en la CAM por municipio? (nivel 2 del proyecto 01) |
+| `08_calor_islas_urbanas_satellite/` | ¿Dónde se concentra el calor urbano y cómo se relaciona con renta y vegetación? (satélite) |
 
 ## Cómo crear un proyecto nuevo
 
