@@ -1,0 +1,9 @@
+# Computer vision para teledetección (avanzado, pesado).
+# pip install -r requirements-cv.txt
+torch
+torchvision
+torchgeo
+opencv-python
+scikit-image
+albumentations
+segmentation-models-pytorch

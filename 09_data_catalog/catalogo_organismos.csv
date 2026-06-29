@@ -21,3 +21,12 @@ id,nombre,ambito,pais,url,temas,tipo_datos,api_disponible,notas
 20,UN Data,global,INT,https://data.un.org,desarrollo;ODS,estadistica,si,multiagencia
 21,NASA,global,INT,https://earthdata.nasa.gov,satelite;clima,raster,si,Earthdata
 22,NOAA,global,INT,https://www.ncei.noaa.gov,clima;oceanos,series,si,CDO API
+23,Copernicus Data Space,europeo,EU,https://dataspace.copernicus.eu,satelite;clima,raster,si,Sentinel via STAC/openEO
+24,Microsoft Planetary Computer,global,INT,https://planetarycomputer.microsoft.com,satelite;clima,raster;STAC,si,cloud-native geo
+25,USGS EarthExplorer,global,INT,https://earthexplorer.usgs.gov,satelite,raster,si,Landsat historico
+26,NASA FIRMS,global,INT,https://firms.modaps.eosdis.nasa.gov,incendios,punto,si,focos activos casi tiempo real
+27,EGMS,europeo,EU,https://egms.land.copernicus.eu,movimiento_terreno,vector,si,subsidencia InSAR
+28,OpenAQ,global,INT,https://openaq.org,calidad_aire,estaciones,si,aire global estaciones
+29,OpenStreetMap,global,INT,https://www.openstreetmap.org,cartografia,vector,si,Overpass API
+30,Google Earth Engine,global,INT,https://earthengine.google.com,satelite,raster,si,procesamiento cloud
+31,Sentinel Hub,europeo,EU,https://www.sentinel-hub.com,satelite,raster,si,imagenes procesadas free tier/pago

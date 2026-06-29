@@ -7,3 +7,11 @@ id,nombre_api,organismo,url_documentacion,autenticacion,formato_respuesta,limite
 6,NASA FIRMS,NASA,https://firms.modaps.eosdis.nasa.gov/api/,api_key,CSV,limitado,https://firms.modaps.eosdis.nasa.gov/api/area/csv/,candidato,focos de incendio
 7,BOE Datos Abiertos,BOE,https://www.boe.es/datosabiertos/,no,XML,razonable,https://www.boe.es/datosabiertos/api/boe/sumario/,candidato,legislacion y anuncios
 8,ECB Data Portal,ECB,https://data.ecb.europa.eu/help/api/overview,no,SDMX,razonable,https://data-api.ecb.europa.eu/service/data/,candidato,macro eurozona
+9,Copernicus STAC,Copernicus,https://documentation.dataspace.copernicus.eu,oauth,JSON,por_cuota,https://catalogue.dataspace.copernicus.eu/stac,candidato,pystac-client
+10,openEO,Copernicus,https://openeo.org,oauth,JSON,por_cuota,https://openeo.dataspace.copernicus.eu,candidato,datacubes cloud
+11,NASA FIRMS API,NASA,https://firms.modaps.eosdis.nasa.gov/api/,api_key,CSV,limitado,https://firms.modaps.eosdis.nasa.gov/api/area/csv/,candidato,incendios activos
+12,USGS M2M API,USGS,https://m2m.cr.usgs.gov,api_key,JSON,razonable,https://m2m.cr.usgs.gov/api/api/json/stable,candidato,Landsat
+13,OpenAQ API,OpenAQ,https://docs.openaq.org,api_key,JSON,limitado,https://api.openaq.org/v3,candidato,calidad aire
+14,OSM Overpass,OpenStreetMap,https://wiki.openstreetmap.org/wiki/Overpass_API,no,JSON,limitado,https://overpass-api.de/api/interpreter,candidato,geometrias OSM
+15,Sentinel Hub API,Sentinel Hub,https://docs.sentinel-hub.com,oauth,imagen,free_tier,https://services.sentinel-hub.com/api/v1/process,candidato,imagenes procesadas
+16,USGS Earthquake API,USGS,https://earthquake.usgs.gov/fdsnws/event/1/,no,GeoJSON,razonable,https://earthquake.usgs.gov/fdsnws/event/1/query,candidato,terremotos

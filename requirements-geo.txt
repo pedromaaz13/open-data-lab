@@ -1,0 +1,12 @@
+# Stack geoespacial (vector + raster). Instalar: pip install -r requirements-geo.txt
+geopandas
+shapely
+pyproj
+rasterio
+rioxarray
+xarray
+contextily
+osmnx
+h3
+folium
+leafmap

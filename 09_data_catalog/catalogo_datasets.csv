@@ -11,3 +11,9 @@ id,nombre,organismo,tema,url,formato,frecuencia_actualizacion,nivel_geografico,f
 10,House Price Index,Eurostat,vivienda,https://ec.europa.eu/eurostat,JSON-stat,trimestral,NUTS,2026-06-26,Eurostat open,candidato,comparativa europea
 11,Limites administrativos,CNIG/IGN,cartografia,https://centrodedescargas.cnig.es,GPKG,anual,municipio,2026-06-26,CC-BY 4.0,candidato,base cartografica
 12,Atlas de Renta,INE,renta,https://www.ine.es,CSV,anual,municipio,2026-06-26,Reutilizacion con atribucion,candidato,renta por seccion censal
+13,Sentinel-2 L2A,Copernicus,satelite,https://dataspace.copernicus.eu,COG,continua,raster,2026-06-29,Copernicus open,candidato,NDVI/NBR vegetacion incendios
+14,Landsat 8/9 C2 L2,USGS,satelite,https://earthexplorer.usgs.gov,GeoTIFF,16 dias,raster,2026-06-29,USGS open,candidato,LST islas de calor
+15,Sentinel-5P NO2,Copernicus,calidad_aire,https://dataspace.copernicus.eu,NetCDF,diaria,raster,2026-06-29,Copernicus open,candidato,contaminacion atmosferica
+16,EGMS movimiento terreno,Copernicus,geologia,https://egms.land.copernicus.eu,CSV,anual,punto,2026-06-29,Copernicus open,candidato,subsidencia InSAR
+17,EuroSAT,phelber,ml_satelite,https://github.com/phelber/EuroSAT,imagen,estatico,raster,2026-06-29,abierta,candidato,clasificacion land cover CV
+18,xBD/xView2,xView2,ml_satelite,https://xview2.org,imagen,estatico,raster,2026-06-29,abierta,candidato,danos desastre CV

@@ -1,0 +1,11 @@
+# Teledetección / satélite (búsqueda + lectura cloud-native).
+# pip install -r requirements-remote-sensing.txt
+pystac-client
+planetary-computer
+stackstac
+odc-stac
+sentinelhub
+openeo
+eodag
+earthengine-api
+geemap
