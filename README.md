@@ -156,7 +156,13 @@ docker compose --profile core up
 
 ## Estado del proyecto
 
-Repositorio en construcción. Ver [`roadmap.md`](roadmap.md) para las fases.
+Repositorio en construcción activa. Ver [`roadmap.md`](roadmap.md) para las fases.
+
+**Proyecto destacado — Madrid: renta vs vivienda** (`06_proyectos/01_mapa_vivienda_salarios/`):
+laboratorio en marcha con **datos reales del INE** (Atlas de Renta 2023 por distrito),
+descargador reproducible (`extract.py`), limpieza (`load_ine.py`), mapas interactivos
+(Folium + Kepler.gl), capa **DuckDB** y un notebook con 11 casos de estudio
+socioeconómicos. Siguiente: añadir alquiler/compra para el *esfuerzo de vivienda*.
 
 ## Licencia
 
